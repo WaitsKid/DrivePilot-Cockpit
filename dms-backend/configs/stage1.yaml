@@ -2,6 +2,7 @@ project_name: DriveGuard-DMS-Backend
 
 # 修改成你解压后的 dataset_new 目录。
 # 该目录下面必须直接存在 train 和 test。
+# https://www.kaggle.com/datasets/serenaraju/yawn-eye-dataset-new?resource=download下载dataset_new文件夹
 dataset_root: "D:/Qt/workplace/DriveGuard-DMS-Backend/dataset_new"
 
 output_dir: "artifacts"
