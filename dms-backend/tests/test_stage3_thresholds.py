@@ -1,4 +1,4 @@
-from dms_backend.evaluation.evaluator import PredictionRecord, find_best_risk_threshold
+from dms_backend.evaluation.thresholds import PredictionRecord, find_best_risk_threshold
 
 
 def test_risk_threshold_selection_for_closed_class() -> None:
