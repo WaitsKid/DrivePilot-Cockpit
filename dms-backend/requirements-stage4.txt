@@ -1,0 +1,5 @@
+opencv-python>=4.10.0
+onnxruntime>=1.18.0
+numpy>=1.26.0
+PyYAML>=6.0.1
+pytest>=8.0.0

@@ -1,0 +1,16 @@
+{
+    "xfyun_app_id": "你的讯飞APPID",
+    "xfyun_api_key": "你的讯飞APIKey",
+    "xfyun_api_secret": "你的讯飞APISecret",
+    "demo_contact_name": "演示联系人",
+    "demo_phone": "13800000000",
+    "amap_web_service_key": "你的高德Web服务Key",
+    "amap_default_city": "绍兴",
+    "amap_default_longitude": 120.580232,
+    "amap_default_latitude": 30.029752,
+    "amap_js_key": "你的高德JavaScript Key",
+    "amap_js_security_code": "你的高德安全密钥",
+    "dms_backend_url": "http://127.0.0.1:8765",
+    "dms_voice_enabled": true,
+    "ai_agent_backend_url": "ws://127.0.0.1:8770/ws/agent"
+}

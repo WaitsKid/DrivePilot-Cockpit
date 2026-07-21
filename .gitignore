@@ -1,0 +1,61 @@
+# Secrets and local configuration
+**/config.json
+**/.env
+!**/.env.example
+!**/config.example.json
+*.pem
+*.key
+
+# Python
+**/.venv/
+**/venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/*.py[cod]
+**/*.egg-info/
+.coverage
+htmlcov/
+
+# Qt / CMake / IDE
+**/cmake-build-*/
+**/build*/
+**/CMakeFiles/
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/*.user
+**/.idea/
+**/.vscode/
+
+# Runtime data
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.tmp
+*.bak
+
+# DMS datasets, personal data, models and outputs
+dms-backend/dataset*/
+dms-backend/data/raw/
+dms-backend/personal_data/*
+!dms-backend/personal_data/.gitkeep
+dms-backend/artifacts/*
+!dms-backend/artifacts/manifests/
+dms-backend/artifacts/manifests/*
+!dms-backend/artifacts/manifests/.gitkeep
+dms-backend/models/**/*.onnx
+dms-backend/**/*.pt
+dms-backend/**/*.pth
+
+# User imported media
+hmi-client/Videos/*
+!hmi-client/Videos/README.md
+hmi-client/ImportedMedia/
+hmi-client/Exports/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

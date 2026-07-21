@@ -1,0 +1,7 @@
+# Install torch and torchvision using the current command from the official PyTorch selector first.
+-r requirements.txt
+
+# Stage 2 uses the installed torch / torchvision for MobileNetV2 transfer learning.
+# Keep these unpinned here because CUDA wheels must match the local NVIDIA driver.
+torch
+torchvision

@@ -1,0 +1,37 @@
+project_name: DriveGuard-DMS-Backend
+
+# 修改成你解压后的 dataset_new 目录。
+# 该目录下面必须直接存在 train 和 test。
+dataset_root: "D:/AI_Datasets/yawn_eye_dataset_new/dataset_new"
+
+output_dir: "artifacts"
+random_seed: 20260720
+validation_ratio: 0.15
+
+expected_layout:
+  train:
+    - Closed
+    - Open
+    - no_yawn
+    - yawn
+  test:
+    - Closed
+    - Open
+    - no_yawn
+    - yawn
+
+allowed_extensions:
+  - .jpg
+  - .jpeg
+  - .png
+  - .bmp
+  - .webp
+
+# 训练任务不是“四个疲劳等级”，而是两个视觉线索任务。
+tasks:
+  eye_state:
+    Closed: 0
+    Open: 1
+  yawn_state:
+    no_yawn: 0
+    yawn: 1

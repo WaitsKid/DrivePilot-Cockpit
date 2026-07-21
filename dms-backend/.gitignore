@@ -1,0 +1,12 @@
+.venv/
+.idea/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+artifacts/
+personal_data/*
+!personal_data/.gitkeep
+*.pt
+*.pth
+*.onnx
+.DS_Store
