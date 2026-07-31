@@ -1,0 +1,36 @@
+project_name: DriveGuard-DMS-Backend
+
+# Dataset root must contain train/ and test/.
+dataset_root: "D:/path/to/dataset_new"
+
+output_dir: "artifacts"
+random_seed: 42
+validation_ratio: 0.15
+
+expected_layout:
+  train:
+    - Closed
+    - Open
+    - no_yawn
+    - yawn
+  test:
+    - Closed
+    - Open
+    - no_yawn
+    - yawn
+
+allowed_extensions:
+  - .jpg
+  - .jpeg
+  - .png
+  - .bmp
+  - .webp
+
+# Two independent visual classification tasks.
+tasks:
+  eye_state:
+    Closed: 0
+    Open: 1
+  yawn_state:
+    no_yawn: 0
+    yawn: 1

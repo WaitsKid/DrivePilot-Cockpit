@@ -1,0 +1,36 @@
+project_name: DriveGuard-DMS-Backend
+
+manifest_dir: "artifacts/manifests"
+checkpoint_root: "artifacts/training"
+evaluation_root: "artifacts/evaluation"
+onnx_root: "artifacts/onnx"
+
+device: "auto"
+batch_size: 64
+num_workers: 0
+pin_memory: true
+
+onnx:
+  opset_version: 17
+  dynamic_batch: true
+  validate_atol: 0.0001
+  validate_rtol: 0.001
+
+benchmark:
+  warmup_runs: 10
+  measured_runs: 100
+
+# risk_class_index 表示会提高疲劳风险的类别。
+# eye_state: Closed=0；yawn_state: yawn=1。
+tasks:
+  eye_state:
+    risk_class_index: 0
+    threshold_min: 0.20
+    threshold_max: 0.80
+    threshold_step: 0.01
+
+  yawn_state:
+    risk_class_index: 1
+    threshold_min: 0.20
+    threshold_max: 0.80
+    threshold_step: 0.01

@@ -1,0 +1,58 @@
+# Qt / CMake
+build/
+out/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+*.ninja
+.ninja_*
+*.user
+*.user.*
+.qmlls.ini
+
+# IDE
+.idea/
+.vscode/
+.qtcreator/
+.vs/
+
+# Python
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/*.py[cod]
+
+# Local configuration and secrets
+**/.env
+**/config.json
+
+# Runtime data and logs
+**/logs/
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+**/*.log
+
+# DMS data, weights and generated outputs
+dms-backend/artifacts/
+dms-backend/personal_data/
+dms-backend/dataset*/
+**/*.pt
+**/*.pth
+**/*.ckpt
+**/*.onnx
+
+# Build products
+*.exe
+*.dll
+*.obj
+*.o
+*.pdb
+*.lib
+*.a
+
+# OS
+.DS_Store
+Thumbs.db

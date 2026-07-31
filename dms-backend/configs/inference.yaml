@@ -1,0 +1,41 @@
+project_name: DriveGuard-DMS-Backend
+
+models:
+  yunet: "models/yunet/face_detection_yunet_2026may.onnx"
+  eye_state:
+    onnx: "artifacts/onnx/eye_state_mobilenetv2.onnx"
+    metadata: "artifacts/onnx/eye_state_metadata.json"
+    deployment_config: "artifacts/evaluation/eye_state/deployment_config.json"
+    risk_threshold_override: null
+  yawn_state:
+    onnx: "artifacts/onnx/yawn_state_mobilenetv2.onnx"
+    metadata: "artifacts/onnx/yawn_state_metadata.json"
+    deployment_config: "artifacts/evaluation/yawn_state/deployment_config.json"
+    risk_threshold_override: null
+
+face_detector:
+  input_width: 320
+  input_height: 320
+  score_threshold: 0.85
+  nms_threshold: 0.30
+  top_k: 5000
+
+# Closed/Open 数据是眼睛裁剪图，因此按 YuNet 双眼关键点分别裁剪。
+# yawn/no_yawn 数据通常是完整人脸，因此哈欠模型使用扩展后的人脸 ROI。
+roi:
+  eye_width_ratio: 0.58
+  eye_height_ratio: 0.42
+  minimum_eye_size: 20
+  face_margin_ratio: 0.10
+
+runtime:
+  onnx_intra_op_threads: 0
+
+camera:
+  index: 0
+  width: 1280
+  height: 720
+  mirror_preview: true
+  process_every_n_frames: 1
+
+output_root: "artifacts/inference"

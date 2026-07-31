@@ -1,0 +1,55 @@
+project_name: DriveGuard-DMS-Backend
+
+# CSV manifests generated from the dataset configuration.
+manifest_dir: "artifacts/manifests"
+output_root: "artifacts/training"
+
+seed: 42
+device: "auto"
+num_workers: 0
+pin_memory: true
+amp: true
+deterministic: true
+
+model:
+  architecture: "mobilenet_v2"
+  pretrained: true
+  dropout: 0.25
+  num_classes: 2
+  image_size: 224
+
+training:
+  epochs: 24
+  freeze_backbone_epochs: 3
+  batch_size: 32
+  learning_rate: 0.0008
+  backbone_lr_multiplier: 0.15
+  weight_decay: 0.0001
+  label_smoothing: 0.04
+  gradient_clip_norm: 2.0
+  early_stopping_patience: 7
+  scheduler_patience: 2
+  scheduler_factor: 0.5
+  min_learning_rate: 0.000001
+
+# Task-specific data augmentation.
+tasks:
+  eye_state:
+    classes:
+      0: "Closed"
+      1: "Open"
+    random_resized_crop_scale: [0.88, 1.0]
+    rotation_degrees: 8
+    horizontal_flip_probability: 0.5
+    color_jitter: [0.18, 0.18, 0.16, 0.04]
+    random_erasing_probability: 0.08
+
+  yawn_state:
+    classes:
+      0: "no_yawn"
+      1: "yawn"
+    random_resized_crop_scale: [0.78, 1.0]
+    rotation_degrees: 10
+    horizontal_flip_probability: 0.5
+    color_jitter: [0.22, 0.22, 0.20, 0.05]
+    random_erasing_probability: 0.10
