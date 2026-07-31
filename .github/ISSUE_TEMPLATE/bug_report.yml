@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible defect
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: subsystem
+    attributes:
+      label: Subsystem
+      options:
+        - Qt HMI
+        - DMS backend
+        - AI Agent backend
+        - Documentation/Build
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      placeholder: "1. Start...\n2. Open...\n3. Observe..."
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Remove secrets and personal data before pasting.
+      render: shell
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: Windows 11, Qt 6.9.1 MSVC, Python 3.11

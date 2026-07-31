@@ -1,0 +1,61 @@
+project_name: DriveGuard-DMS-Backend
+
+# The service uses the YuNet + MobileNetV2 inference pipeline defined below.
+inference_config: "configs/inference.yaml"
+
+server:
+  host: "127.0.0.1"
+  port: 8765
+  log_level: "info"
+  auto_start_monitoring: true
+  websocket_push_interval_ms: 250
+
+monitor:
+  # The camera stays inside the Python service. No image endpoint is exposed.
+  target_process_fps: 8.0
+  camera_open_retry_seconds: 2.0
+  camera_read_failure_limit: 15
+  mirror_input: true
+  publish_every_n_frames: 1
+
+fatigue:
+  # Time-weighted PERCLOS window. Only reliable face frames are included.
+  perclos_window_seconds: 30.0
+  yawn_window_seconds: 60.0
+  minimum_valid_window_seconds: 8.0
+  maximum_sample_gap_seconds: 0.50
+
+  # A normal blink should not immediately reset a closed-eye episode.
+  eye_open_release_seconds: 0.22
+
+  # One yawn is counted only after the yawn signal stays active long enough.
+  minimum_yawn_event_seconds: 0.80
+  yawn_release_seconds: 0.45
+
+  # Raw fatigue rules.
+  slight_closed_seconds: 1.10
+  severe_closed_seconds: 2.50
+  slight_perclos: 0.30
+  severe_perclos: 0.52
+  slight_yawn_count: 2
+  severe_yawn_count: 3
+  energetic_perclos_max: 0.10
+  energetic_minimum_tracking_seconds: 18.0
+
+  # State debounce. Escalation is quick; recovery is deliberately slower.
+  slight_escalation_hold_seconds: 0.60
+  severe_escalation_hold_seconds: 0.30
+  recovery_from_severe_seconds: 10.0
+  recovery_from_slight_seconds: 8.0
+  recovery_to_energetic_seconds: 15.0
+
+  # If the driver disappears, temporal buffers are reset after this time.
+  face_missing_reset_seconds: 12.0
+
+alerts:
+  slight_reminder_cooldown_seconds: 45.0
+  severe_reminder_cooldown_seconds: 20.0
+
+privacy:
+  store_camera_frames: false
+  expose_camera_frames_over_api: false
